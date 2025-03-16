@@ -20,8 +20,8 @@ public class userEndPoints {
   			-H 'Content-Type: application/json' \
 		 */
 		
-//		.accept(ContentType.JSON)
-//		.contentType(ContentType.JSON)
+		.accept(ContentType.JSON)
+		.contentType(ContentType.JSON)
 		.body(payload)
 		.when()
 		.post(Routes.postCall);
@@ -57,6 +57,7 @@ public class userEndPoints {
 		
 		.accept(ContentType.JSON)
 		.contentType(ContentType.JSON)
+		.pathParam("username", userName)
 		.body(payload)
 		.when()
 		.post(Routes.putCall);
@@ -64,7 +65,7 @@ public class userEndPoints {
 		
 	}
 	
-	public static Response deleteUser(user payload) {
+	public static Response deleteUser(String userName) {
 		Response response =  
 				given()
 		/*
@@ -72,6 +73,7 @@ public class userEndPoints {
 		 */
 		
 		.accept(ContentType.JSON)
+		.pathParam("username", userName)
 //		.contentType(ContentType.JSON)// we donot need the contentType as website doesnot have this
 //		.body(payload) // body not needed
 		.when()

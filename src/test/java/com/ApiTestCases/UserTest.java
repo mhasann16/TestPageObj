@@ -47,7 +47,7 @@ public class UserTest {
 	@Test(priority=2)
 	public void testGetUser() {
 		
-		Response response = userEndPoints.createUser(userPayload);
+		Response response = userEndPoints.getUser(this.userPayload.getUsername());
 		response.then().log().all();
 		
 		// validation using assertion
@@ -73,13 +73,12 @@ public class UserTest {
 	
 	@Test(priority=4)
 	public void testDeleteUser() {
-//		userPayload.setFirstName(faker.name().firstName());
-//		Response response = userEndPoints.deleteUser(this.userPayload.getUsername());
-//		response.then().log().all();
+		Response response = userEndPoints.deleteUser(this.userPayload.getUsername());
+		response.then().log().all();
 		
 		// validation using assertion
 		
-//		Assert.assertEquals(response.getStatusCode(), 200);
+		Assert.assertEquals(response.getStatusCode(), 200);
 		System.out.println("This is our delete user method");
 	}
 
